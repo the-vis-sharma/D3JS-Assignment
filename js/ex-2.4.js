@@ -17,7 +17,7 @@ let fetchData = () => {
                         .then(res3 => res3.json())
                         .then(data3 => {
                             allData = allData.concat(data3);
-                            console.log(allData);
+                            // console.log(allData);
                             createBarChart(allData);
                         });
                 });
@@ -45,11 +45,11 @@ let createBarChart = (data) => {
     let requiredMinistries = ["HOME AFFAIRS", "COMMERCE AND INDUSTRY", "MINES"];
     let filteredMinistries = dataByMinistries.filter(obj => requiredMinistries.indexOf(obj.key) !== -1);
     
-    console.log(filteredMinistries);
+    // console.log(filteredMinistries);
     let matchedData = filteredMinistries.map((obj) => {
         return { "ministry": obj.key, "count": obj.values.length }
     });
-    console.log(matchedData);
+    // console.log(matchedData);
 
     x.domain(matchedData.map(obj => obj.ministry));
     y.domain([0, d3.max(matchedData, obj => obj.count)]);

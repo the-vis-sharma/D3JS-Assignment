@@ -102,7 +102,7 @@ let createTable = (data) => {
         });
     });
 
-    console.log(userCounts);
+    // console.log(userCounts);
 
     userCounts.forEach(obj => {
         let rows = table.append("tr");

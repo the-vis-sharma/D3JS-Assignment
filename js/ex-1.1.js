@@ -4,7 +4,7 @@ let fetchData = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            // console.log(data);
+            // // console.log(data);
             createTable(data.rajyasabha);
         });
 };
@@ -12,10 +12,10 @@ let fetchData = () => {
 fetchData();
 
 let createRows = (table, data) => {
-    console.log("updating rows...");
+    // console.log("updating rows...");
     let rows = table.selectAll("tr")
         .data(data, obj => {
-            console.log("binding data...");
+            // console.log("binding data...");
             if (obj !== undefined) {
                 return obj.id;
             }
@@ -25,10 +25,10 @@ let createRows = (table, data) => {
 
     rows.selectAll("td")
         .data(obj => {
-            console.log("adding rows...");
-            console.log(obj);
+            // console.log("adding rows...");
+            // console.log(obj);
             let arr = Object.values(obj);
-            // console.log(arr);
+            // // console.log(arr);
             return arr;
         })
         .enter()
@@ -74,14 +74,14 @@ let createTable = (data) => {
         .style("min-width", "150px")
         .text(col => col);
     
-    //console.log(data);
+    //// console.log(data);
     
     createRows(table, data);
     
     
     //search functionality 
     searchBar.on("keyup", function () {
-        console.log("searching...");
+        // console.log("searching...");
         let query = this.value.trim();
 
         let searchResult = data.map((obj) => {
@@ -91,14 +91,14 @@ let createTable = (data) => {
             }
         }).filter((item) => item !== undefined);
 
-        console.log(searchResult);
+        // console.log(searchResult);
         createRows(table, searchResult);
     });
      
     // data.forEach(obj => {
     //     let rows = table.append("tr");
     //     for (let key in obj) {
-    //         console.log(key, obj[key]);
+    //         // console.log(key, obj[key]);
     //         rows.append("td")
     //             .text(obj[key]);
     //     }
@@ -108,7 +108,7 @@ let createTable = (data) => {
     //     .key(obj => obj.ministry)
     //     .entries(data);
 
-    // // console.log(dataByMinistries);
+    // // // console.log(dataByMinistries);
 
     // let dataByMinistriesUsers = dataByMinistries.map(element => {
     //     return d3.nest()
@@ -118,7 +118,7 @@ let createTable = (data) => {
 
     // let userCounts = dataByMinistriesUsers.map(users => {
     //     return users.reduce((prev, cur) => {
-    //         // console.log(prev, cur);
+    //         // // console.log(prev, cur);
     //         if (prev.values.length > cur.values.length) {
     //             return prev;
     //         }
@@ -126,7 +126,7 @@ let createTable = (data) => {
     //     });
     // });
 
-    // console.log(userCounts);
+    // // console.log(userCounts);
 
     // userCounts.forEach(obj => {
     //     let rows = table.append("tr");
@@ -140,6 +140,6 @@ let createTable = (data) => {
     //         .text(obj.values.length);
     // });
 
-    // console.log(dataByMinistriesUsers);
+    // // console.log(dataByMinistriesUsers);
 
 };
